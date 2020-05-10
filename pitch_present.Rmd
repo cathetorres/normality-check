@@ -1,0 +1,51 @@
+---
+title: "Normality Check App"
+author: "Catherine Torres"
+date: "10/05/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Description
+
+This application will allow you to check the normality of four numeric variables from the *iris* data.
+
+The application is running on: https://catherine-torres.shinyapps.io/Normality_check/
+
+The ui.R and Server.R Code can be found in the github repository: https://github.com/cathetorres/normality-check
+
+## The *iris* data
+
+```{r, echo = TRUE}
+summary(iris)
+```
+
+## How to use the application
+
+First, choose which variable you want to check the normality:
+
+- Sepal.Length
+- Sepal.Width
+- Pepal.Length
+- Pepal.Width
+
+## Checking the normality with plots
+
+You can check the normality with two types of plots:
+
+```{r}
+par(mfrow = c(1,2))
+hist(iris$Sepal.Width, main = "(1) Histogram")
+qqnorm(iris$Sepal.Width, main = "(2) QQ plot")
+```
+
+## Checking the normality with tests
+
+You can also check the normality by using the Shapiro-Wilks test:
+
+```{r}
+shapiro.test(iris$Sepal.Width)
+```
